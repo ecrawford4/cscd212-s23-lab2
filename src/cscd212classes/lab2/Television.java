@@ -18,7 +18,7 @@ public class Television {
         this.make = make;
     }
 
-    public Television(String make, String model, boolean smart, int screenSize, int resolution,) {
+    public Television(String make, String model, boolean smart, int screenSize, int resolution) {
         this.make = make;
         this.model = model;
         this.resolution = resolution;
@@ -47,7 +47,7 @@ public class Television {
     public int getResolution() {
         return resolution;
     }
-    
+
     public int getScreenSize() {
         return screenSize;
     }
@@ -59,8 +59,7 @@ public class Television {
 
     @Override
     public String toString() {
-        String str = make + '-' + model + ", " + screenSize + " inch " + resolution;
-        return str;
+        return make + '-' + model + ", " + screenSize + " inch " + resolution;
     }
 }
 
