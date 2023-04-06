@@ -31,7 +31,9 @@ public class Television {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Television that = (Television) o;
-        return fourK == that.fourK && resolution == that.resolution && screenSize == that.screenSize && smart == that.smart && Objects.equals(make, that.make) && Objects.equals(model, that.model);
+        return fourK == that.fourK && resolution == that.resolution
+                && screenSize == that.screenSize && smart == that.smart
+                && Objects.equals(make, that.make) && Objects.equals(model, that.model);
     }
 
     public String getMake() {
@@ -45,7 +47,7 @@ public class Television {
     public int getResolution() {
         return resolution;
     }
-
+    
     public int getScreenSize() {
         return screenSize;
     }
