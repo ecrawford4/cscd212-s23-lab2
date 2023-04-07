@@ -8,8 +8,8 @@ public class TelevisionResolutionMakeDescendingComparator implements Comparator<
     public int compare(Television t1, Television t2) {
         if (t1 == null || t2 == null)
             throw new IllegalArgumentException("null parameter in TelevisionResolutionMakeDescendingComparator");
-        if(Integer.compare(t1.getResolution(),t2.getResolution()) != 0)
-            return t1.getMake().compareTo(t2.getMake());
-        return Integer.compare(t1.getResolution(),t2.getResolution());
+        if((t2.getResolution() - t1.getResolution()) == 0)
+            return t2.getMake().compareTo(t1.getMake());
+        return (t2.getResolution() - t1.getResolution());
     }
 }
