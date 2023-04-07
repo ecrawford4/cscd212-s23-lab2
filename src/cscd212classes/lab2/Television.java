@@ -81,12 +81,22 @@ public class Television implements Comparable<Television>{
         return this.screenSize;
     }
 
-    //need to FIX this
+    /**
+     * The hashCode returns the value of the make hashCode from the String class
+     *  + the value of the hashCode for the model from the String class
+     *  + the resolution
+     *  + the hashCode value of smart from the Boolean class
+     *  + the hashCode of 4K from the Boolean class
+     */
     @Override
     public int hashCode() {
-        return Objects.hash(fourK, make, model, resolution, screenSize, smart);
+        return (this.make.hashCode()
+                + this.model.hashCode() + resolution
+                + Boolean.hashCode(this.smart)
+                + Boolean.hashCode(this.fourK));
     }
-
+    /**
+     * */
     @Override
     public String toString() {
         return this.make + '-' + this.model + ", " + this.screenSize + " inch " +
