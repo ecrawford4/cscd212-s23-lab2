@@ -2,7 +2,7 @@ package cscd212classes.lab2;
 
 import java.util.Objects;
 
-public class Television {
+public class Television implements Comparable<Television>{
     private final boolean fourK;
     private final String make;
     private final String model;
@@ -12,7 +12,7 @@ public class Television {
 
     public Television(String model, boolean smart, int screenSize, int resolution, String make) {
         if(model == null || make == null || screenSize < 32 || resolution < 720)
-            throw new IllegalArgumentException("Bad parameters Television EVC");
+            throw new IllegalArgumentException("Invalid parameter in constructor");
 
         this.model = model;
         this.smart = smart;
@@ -21,26 +21,40 @@ public class Television {
         this.make = make;
 
         if(resolution == 2160)
-            fourK = true;
-        else fourK = false;
+            this.fourK = true;
+        else this.fourK = false;
     }
 
     public Television(String make, String model, boolean smart, int screenSize, int resolution) {
         if(model == null || make == null || screenSize < 32 || resolution < 720)
-            throw new IllegalArgumentException("Bad parameters Television EVC");
+            throw new IllegalArgumentException("Invalid parameter in constructor");
 
         this.make = make;
         this.model = model;
-        this.resolution = resolution;
-        this.screenSize = screenSize;
         this.smart = smart;
+        this.screenSize = screenSize;
+        this.resolution = resolution;
 
         if(resolution == 2160)
-            fourK = true;
-        else fourK = false;
+            this.fourK = true;
+        else this.fourK = false;
     }
 
-    //look this over
+    //need to FIX this
+    @Override
+    public int compareTo(Television another) {
+        if (another == null) throw new IllegalArgumentException("null parameter in the compareTo method");
+
+        if (this.make.compareTo(another.make) != 0) {
+            if (this.model.compareTo(another.model) != 0) {
+                return this.screenSize - another.screenSize;
+            }
+            return this.model.compareTo(another.model);
+        }
+        return this.make.compareTo(another.make);
+    }
+
+    //add this.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,31 +66,32 @@ public class Television {
     }
 
     public String getMake() {
-        return make;
+        return this.make;
     }
 
     public String getModel() {
-        return model;
+        return this.model;
     }
 
     public int getResolution() {
-        return resolution;
+        return this.resolution;
     }
 
     public int getScreenSize() {
-        return screenSize;
+        return this.screenSize;
     }
 
-    //need to finish this
+    //need to FIX this
     @Override
     public int hashCode() {
         return Objects.hash(fourK, make, model, resolution, screenSize, smart);
     }
 
-    //need to finish this
     @Override
     public String toString() {
-        return make + '-' + model + ", " + screenSize + " inch " + resolution;
+        return this.make + '-' + this.model + ", " + this.screenSize + " inch " +
+                ((this.smart)?"smart tv":"tv") + " with " +
+                ((this.fourK)? "4K":this.resolution) + " resolution";
     }
 }
 
