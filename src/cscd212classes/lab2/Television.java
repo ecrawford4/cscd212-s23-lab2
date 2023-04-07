@@ -58,7 +58,13 @@ public class Television implements Comparable<Television>{
         return this.make.compareTo(another.make);
     }
 
-    //add this.
+    /**
+     * The equals methods checks in this order
+     * obj equal to this returns true
+     * obj equal to null returns false
+     * obj not an instance of Television returns false
+     * All class variables must be exactly equal the variables of another.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,7 +106,12 @@ public class Television implements Comparable<Television>{
                 + Boolean.hashCode(this.fourK));
     }
     /**
-     * */
+     * The toString method returns make-model, screen size inch
+     * (smart if the resolution is 2160 otherwise empty string)
+     * tv with (4K resolution or the tv resolution resolution)
+     * No Smart or 4K Example: TCL-NS32R, 32 inch tv with 720 resolution
+     * Smart and 4K Example: Samsung-SM85U, 85 inch smart tv with 4K resolution
+     */
     @Override
     public String toString() {
         return this.make + '-' + this.model + ", " + this.screenSize + " inch " +
