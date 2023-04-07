@@ -40,13 +40,17 @@ public class Television implements Comparable<Television>{
         else this.fourK = false;
     }
 
-    //need to FIX this
+    /**
+     * The compareTo method compares based on the make.
+     * If the makes are the same then it compares based on the model.
+     * If the models are the same it compares based on the screen size.
+     */
     @Override
     public int compareTo(Television another) {
         if (another == null) throw new IllegalArgumentException("null parameter in the compareTo method");
 
-        if (this.make.compareTo(another.make) != 0) {
-            if (this.model.compareTo(another.model) != 0) {
+        if (this.make.compareTo(another.make) == 0) {
+            if (this.model.compareTo(another.model) == 0) {
                 return this.screenSize - another.screenSize;
             }
             return this.model.compareTo(another.model);
@@ -60,9 +64,9 @@ public class Television implements Comparable<Television>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Television that = (Television) o;
-        return fourK == that.fourK && resolution == that.resolution
-                && screenSize == that.screenSize && smart == that.smart
-                && Objects.equals(make, that.make) && Objects.equals(model, that.model);
+        return this.fourK == that.fourK && this.resolution == that.resolution
+                && this.screenSize == that.screenSize && this.smart == that.smart
+                && Objects.equals(this.make, that.make) && Objects.equals(this.model, that.model);
     }
 
     public String getMake() {
